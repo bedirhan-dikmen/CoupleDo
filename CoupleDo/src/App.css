@@ -1,0 +1,496 @@
+@import url('https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap');
+
+* {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+  font-family: 'Plus Jakarta Sans', sans-serif;
+}
+
+body {
+  background-color: #edeef0;
+}
+
+.app-wrapper {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 20px;
+  transition: all 0.5s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+/* Mod Renkleri - Daha Derin ve Doygun Tonlar */
+.personal { background: radial-gradient(circle at top, #111827, #010409); }
+.couple { background: radial-gradient(circle at top, #e11d48, #4c0519); }
+
+.glass-container {
+  width: 100%;
+  max-width: 1300px;
+  height: 90vh;
+  background: rgba(255, 255, 255, 0.99);
+  border-radius: 40px;
+  display: flex;
+  box-shadow: 0 50px 100px -20px rgba(0, 0, 0, 0.6);
+  overflow: hidden;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+/* Sidebar - Premium ve Tok */
+.sidebar {
+  width: 420px;
+  background: #fdfdfd;
+  padding: 40px;
+  display: flex;
+  flex-direction: column;
+  border-right: 1px solid #e2e8f0;
+}
+
+.logo-area .brand {
+  font-size: 32px;
+  font-weight: 800;
+  color: #010409;
+  letter-spacing: -1.5px;
+}
+
+/* --- YENİ PREMIUM TAKVİM KARTI --- */
+.calendar-card {
+  background: #ffffff;
+  border-radius: 32px;
+  padding: 30px;
+  margin: 30px 0;
+  border: 1px solid #e2e8f0;
+  box-shadow: 0 10px 15px -3px rgba(0, 0, 0, 0.05);
+}
+
+.cal-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 25px;
+}
+
+.cal-header span {
+  font-weight: 800;
+  font-size: 15px;
+  color: #64748b;
+  text-transform: uppercase;
+  letter-spacing: 1.5px;
+}
+
+.cal-nav-btn {
+  background: #f1f5f9;
+  border: none;
+  width: 36px;
+  height: 36px;
+  border-radius: 12px;
+  cursor: pointer;
+  color: #0f172a;
+  transition: 0.2s;
+}
+
+.cal-nav-btn:hover { background: #e2e8f0; transform: translateY(-2px); }
+
+/* Takvim Gridi Stilleri */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 12%);
+  gap: 10px;
+  text-align: center;
+}
+
+.day-header {
+  font-size: 12px;
+  font-weight: 700;
+  color: #94a3b8;
+  padding-bottom: 10px;
+}
+
+.cal-tile {
+  background: #f8fafc;
+  aspect-ratio: 1;
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  border: 1px solid transparent;
+  transition: 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+.cal-tile.active {
+  background: #010409;
+  color: white;
+  transform: scale(1.08);
+  box-shadow: 0 10px 15px -3px rgba(15, 23, 42, 0.3);
+}
+
+.couple .cal-tile.active { background: #e11d48; }
+
+.cal-tile:not(.active):not(.prev-month):not(.next-month):hover {
+  background: #ffffff;
+  border-color: #e2e8f0;
+  transform: translateY(-2px);
+}
+
+.day-num { font-weight: 800; font-size: 16px; }
+
+/* Görev Sayısı Badge Stili */
+.day-count {
+  font-size: 9px;
+  font-weight: 700;
+  padding: 2px 6px;
+  border-radius: 100px;
+  margin-top: 3px;
+}
+
+.personal .cal-tile.active .day-count { background: rgba(255,255,255,0.2); color: white; }
+.cal-tile.active .day-count { background: #fdfdfd; color: #e11d48; }
+.cal-tile:not(.active) .day-count { background: #e2e8f0; color: #64748b; }
+
+.prev-month, .next-month { opacity: 0.3; cursor: default; }
+
+/* --- GÖREV ALANI --- */
+.main-content {
+  flex: 1;
+  padding: 60px 50px;
+  background: #ffffff;
+  display: flex;
+  flex-direction: column;
+}
+
+.main-content header h1 {
+  font-size: 38px;
+  font-weight: 800;
+  color: #010409;
+  letter-spacing: -1.5px;
+}
+
+.subtitle {
+  color: #94a3b8;
+  font-weight: 600;
+  font-size: 18px;
+}
+
+/* Premium Giriş Alanı */
+.todo-input-wrapper {
+  display: flex;
+  gap: 15px;
+  margin-top: 40px;
+}
+
+.modern-input {
+  flex: 1;
+  padding: 20px 30px;
+  border-radius: 20px;
+  border: 2px solid transparent;
+  background: #f1f5f9;
+  font-size: 16px;
+  font-weight: 500;
+  transition: all 0.3s;
+}
+
+.modern-input:focus {
+  border-color: #010409;
+  background: white;
+  outline: none;
+  box-shadow: 0 10px 15px -3px rgba(0,0,0,0.05);
+}
+
+/* PREMIUM ADD BUTTON */
+.btn-add-prem {
+  padding: 0 40px;
+  border-radius: 20px;
+  border: none;
+  background: #010409;
+  color: white;
+  font-weight: 800;
+  font-size: 15px;
+  cursor: pointer;
+  transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+  box-shadow: 0 10px 20px -5px rgba(15, 23, 42, 0.3);
+}
+
+.btn-add-prem:hover {
+  transform: translateY(-2px);
+  filter: brightness(1.2);
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.2);
+}
+
+.couple .btn-add-prem {
+  background: #e11d48;
+  box-shadow: 0 10px 20px -5px rgba(225, 29, 72, 0.3);
+}
+
+/* PREMIUM GÖREV KARTLARI */
+.todo-item {
+  background: #ffffff;
+  border: 1px solid #f1f5f9;
+  padding: 24px 30px;
+  border-radius: 28px;
+  margin-bottom: 16px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  transition: all 0.3s;
+}
+
+.todo-item:hover {
+  border-color: #e2e8f0;
+  transform: translateY(-4px);
+  box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.04);
+}
+
+.todo-text {
+  font-size: 17px;
+  font-weight: 600;
+  color: #1e293b;
+}
+
+.todo-item.completed {
+  opacity: 0.6;
+  background: #f8fafc;
+}
+
+.todo-item.completed .todo-text {
+  text-decoration: line-through;
+}
+
+/* --- YENİ NESIL MOD BUTONLARI --- */
+.mode-nav {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  margin-top: auto;
+}
+
+.mode-nav-btn {
+  padding: 16px 24px;
+  border: none;
+  border-radius: 18px;
+  font-size: 15px;
+  font-weight: 700;
+  cursor: pointer;
+  transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+  background: #ffffff;
+  color: #64748b;
+  box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.05);
+  display: flex;
+  align-items: center;
+  gap: 12px;
+  border: 1px solid transparent;
+}
+
+/* Active State Kişisel */
+.personal .mode-nav-btn.active {
+  background: #010409;
+  color: white;
+  transform: scale(1.02) translateX(8px);
+  box-shadow: 0 20px 25px -5px rgba(15, 23, 42, 0.25);
+}
+
+/* Active State Çift */
+.couple .mode-nav-btn.active {
+  background: #e11d48;
+  color: white;
+  transform: scale(1.02) translateX(8px);
+  box-shadow: 0 20px 25px -5px rgba(225, 29, 72, 0.25);
+}
+
+.mode-nav-btn:hover:not(.active) {
+  background: #f8fafc;
+  border-color: #e2e8f0;
+  transform: translateX(4px);
+}
+
+/* --- TAKVİM KARTINDA TAŞMA ENGELLEYİCİ --- */
+.cal-tile {
+  background: #f8fafc;
+  /* aspect-ratio: 1; -> Kare zorunluluğunu kaldırdık ki aşağı esneyebilsin */
+  width: 100%; /* Yana genişlemeyi %100 durdurur */
+  min-height: 50px; /* Başlangıç yüksekliği */
+  border-radius: 12px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 8px 4px; /* İçerik için dikey boşluk */
+  cursor: pointer;
+  border: 1.5px solid transparent;
+  transition: all 0.3s ease;
+  position: relative;
+  /* overflow: hidden; -> Bunu kaldırdık, aşağı doğru görünür kalsın */
+}
+
+/* Görev Sayısı Badge'ini daha tok ve görünür yapalım */
+.day-count {
+  font-size: 10px;
+  font-weight: 800;
+  padding: 2px 8px;
+  border-radius: 6px;
+  margin-top: 4px; /* Gün sayısıyla arasındaki mesafe */
+  line-height: 1;
+  background: #e2e8f0; /* Default arka plan */
+  color: #64748b;
+  white-space: nowrap; /* Metnin kırılmasını engeller */
+  display: inline-block;
+}
+
+/* Aktif gün seçildiğinde badge rengini de uyduralım */
+.cal-tile.active .day-count {
+  background: rgba(255, 255, 255, 0.2);
+  color: white;
+}
+/* --- GÖREV LİSTESİ DİZAYNI (Checkbar & Modern Butonlar) --- */
+.todo-item {
+  background: #ffffff;
+  border: 2px solid #f1f5f9;
+  padding: 18px 25px;
+  border-radius: 22px;
+  margin-bottom: 12px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between; /* Sol metin, sağ butonlar */
+  transition: all 0.3s ease;
+}
+
+.left-side {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+}
+
+/* ÖZEL CHECKBAR (BÜYÜK VE MODERN) */
+.custom-check {
+  width: 26px;
+  height: 26px;
+  border: 2px solid #cbd5e1;
+  border-radius: 8px;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: 0.2s;
+  background: white;
+}
+
+.custom-check.checked {
+  background: #0f172a ;
+  border-color: #0f172a;
+}
+
+.couple .custom-check.checked {
+  background: #e11d48;
+  border-color: #e11d48;
+}
+
+.check-icon {
+  color: white;
+  font-size: 16px;
+  font-weight: 900;
+}
+
+/* MODERN SİL/DÜZENLE BUTONLARI */
+.action-buttons {
+  display: flex;
+  gap: 8px;
+}
+
+.btn-action {
+  width: 38px;
+  height: 38px;
+  border-radius: 12px;
+  border: none;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  cursor: pointer;
+  background: #f1f5f9;
+  color: #64748b;
+  transition: 0.2s;
+}
+
+.btn-action:hover {
+  background: #e2e8f0;
+  color: #0f2a10;
+  transform: translateY(-2px);
+}
+
+.btn-delete:hover {
+  background: #fee2e2;
+  color: #ef4444;
+}
+
+.btn-edit:hover {
+  background: #dbeafe;
+  color: #3b82f6;
+}
+
+/* Metin Stili */
+.todo-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  transition: 0.3s;
+}
+
+.completed .todo-text {
+  opacity: 0.5;
+  text-decoration: line-through;
+}
+
+/* Metni ve Checkbox'ı tutan sol alan */
+.left-side {
+  display: flex;
+  align-items: flex-start; /* Checkbox'ın yukarıda sabit kalması için 'center' yerine 'flex-start' */
+  gap: 15px;
+  flex: 1; /* Metnin alanı kaplamasını sağlar */
+  min-width: 0; /* Flexbox içinde metnin taşmasını önleyen kritik kural */
+}
+
+/* Görev Metni */
+.todo-text {
+  font-size: 16px;
+  font-weight: 600;
+  color: #1e293b;
+  line-height: 1.5;
+  
+  /* TAŞMA ENGELLEYİCİ KURALLAR */
+  white-space: normal;      /* Metnin yan yana uzamasını engeller */
+  word-wrap: break-word;     /* Uzun kelimeleri böler */
+  word-break: break-word;    /* Kelime çok uzunsa alt satıra atar */
+  overflow-wrap: break-word;
+  display: block;            /* Flex içinde düzgün hizalanması için */
+}
+
+/* Düzenleme yaparken kullanılan input alanı da taşmasın */
+.modern-input {
+  width: 100%;
+  word-break: break-word;
+}
+
+.custom-check {
+  /* Mevcut boyutlar */
+  width: 30px; 
+  height: 30px;
+  
+  /* --- KRİTİK EKLEME --- */
+  min-width: 30px; /* Genişliğin altına düşmesini engeller */
+  min-height: 30px; /* Yüksekliğin altına düşmesini engeller */
+  flex-shrink: 0;   /* Flexbox'ın bu elemanı sıkıştırmasını %100 durdurur */
+  /* -------------------- */
+
+  border-radius: 10px;
+  border: 2.5px solid #cbd5e1;
+  cursor: pointer;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: white;
+  transition: 0.3s;
+  
+  /* Uzun metinlerde checkbox'ın yukarıda sabit durması için */
+  align-self: flex-start; 
+  margin-top: 2px; /* Metnin ilk satırıyla hizalamak için küçük bir ayar */
+}

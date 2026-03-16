@@ -1,0 +1,12 @@
+{
+  "devDependencies": {
+    "autoprefixer": "^10.4.27",
+    "font-awesome": "^4.7.0",
+    "postcss": "^8.5.8",
+    "tailwindcss": "^4.2.1"
+  },
+  "dependencies": {
+    "firebase": "^12.10.0",
+    "react-calendar": "^6.0.0"
+  }
+}
